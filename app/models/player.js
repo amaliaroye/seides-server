@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
-  username: {
+const playerSchema = new mongoose.Schema({
+  email: {
     type: String,
     required: true,
     unique: true
@@ -12,6 +12,16 @@ const userSchema = new mongoose.Schema({
   },
   token: {
     type: String
+  },
+  name: {
+    type: String
+  },
+  sprite: { // image name of sprite sheet
+    type: String
+  },
+  games: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Game'
   }
 }, {
   timestamps: true,
@@ -24,4 +34,4 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('Player', playerSchema)
