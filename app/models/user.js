@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-  username: {
+  email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    set: v => v.toLowerCase()
   },
   hashedPassword: {
     type: String,
@@ -12,16 +13,30 @@ const userSchema = new mongoose.Schema({
   },
   token: {
     type: String
+  },
+  name: {
+    type: String
   }
 }, {
   timestamps: true,
   toObject: {
-    // remove `hashedPassword` field when we call `.toObject`
     transform: (_doc, user) => {
       delete user.hashedPassword
       return user
-    }
+    },
+    getters: true
+  },
+  toJSON: {
+    transform: (_doc, user) => {
+      delete user.hashedPassword
+      return user
+    },
+    getters: true
   }
+})
+
+userSchema.virtual('sprite').get(function () {
+  return this.name.toLowercase()
 })
 
 module.exports = mongoose.model('User', userSchema)
