@@ -2,33 +2,8 @@
 
 Express API server for a platformer game
 
-## ERD
-```mermaid
-erDiagram
-
-MAP ||--o| PLAYER  : contains
-MAP ||--o{ ENTITY  : contains
-PLAYER ||--o{ INTERACTION : has
-ENTITY ||--o{ INTERACTION : has
-
-PLAYER {
-  id player-id
-  name string
-  interactions array-ids
-}
-INTERACTION {
-  id interaction-id
-  player FK-id
-  entity FK-id
-  messages array-strings
-}
-ENTITY {
-  id entity-id
-  name string
-  type string
-  coords array-integers
-}
-```
+## Links
+[Chalk](https://www.npmjs.com/package/chalk)
 
 
 ## Structure

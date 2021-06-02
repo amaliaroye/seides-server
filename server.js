@@ -2,10 +2,13 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const chalk = require('chalk')
 
 // require route files
 const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
+const npcRoutes = require('./app/routes/npc_routes')
+const gameRoutes = require('./app/routes/game_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -58,6 +61,8 @@ app.use(requestLogger)
 // register route files
 app.use(exampleRoutes)
 app.use(userRoutes)
+app.use(npcRoutes)
+app.use(gameRoutes)
 
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
@@ -66,7 +71,7 @@ app.use(errorHandler)
 
 // run API on designated port (4741 in this case)
 app.listen(port, () => {
-  console.log('listening on port ' + port)
+  console.log(chalk.blue('Listening on port: ' + port))
 })
 
 // needed for testing

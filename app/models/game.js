@@ -1,7 +1,12 @@
 const mongoose = require('mongoose')
 
 const gameSchema = new mongoose.Schema({
-  map: {
+  owner: { // owner of game
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  map: { // name of map file
     type: String,
     required: true
   },
@@ -14,17 +19,14 @@ const gameSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  player: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Player',
-    required: true
-  },
-  events: [{
+  npcs: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Npc'
   }]
-}, {
-  timestamps: true
+}, { // options
+  timestamps: true,
+  toObject: { getters: true },
+  toJSON: { getters: true }
 })
 
 module.exports = mongoose.model('Game', gameSchema)
