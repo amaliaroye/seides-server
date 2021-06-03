@@ -1,18 +1,18 @@
 #!/bin/bash
 
 API="http://localhost:4741"
-URL_PATH="/games"
+URL_PATH="/npcs"
 
 curl "${API}${URL_PATH}" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
-  --header "Authorization: Bearer ${TOKEN}" \
   --data '{
-    "game": {
-      "owner": "'"${OWNER}"'",
-      "map": "'"${MAP}"'",
-      "npcs": "'"${NPCS}"'"
+    "npc": {
+      "name": "'"${NAME}"'",
+      "points": "'"${POINTS}"'",
+      "request": "'"${REQUEST}"'",
+      "options": "'"${OPTIONS}"'"
     }
   }'
 

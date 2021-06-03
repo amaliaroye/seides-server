@@ -57,8 +57,7 @@ router.post('/sign-up', (req, res, next) => {
     .catch(next)
 })
 
-// SIGN IN
-// POST /sign-in
+// 🔒 SIGN IN
 router.post('/sign-in', (req, res, next) => {
   const pw = req.body.credentials.password
   let user
@@ -97,8 +96,7 @@ router.post('/sign-in', (req, res, next) => {
     .catch(next)
 })
 
-// CHANGE password
-// PATCH /change-password
+// 🔑CHANGE password
 router.patch('/change-password', requireToken, (req, res, next) => {
   let user
   // `req.user` will be determined by decoding the token payload
@@ -129,8 +127,7 @@ router.patch('/change-password', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-// SIGN OUT
-// DELETE /sign-out
+// 🔒 SIGN OUT
 router.delete('/sign-out', requireToken, (req, res, next) => {
   // create a new random token for the user, invalidating the current one
   req.user.token = null

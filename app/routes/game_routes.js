@@ -47,7 +47,9 @@ router.patch('/games/:id', requireToken, removeBlanks, (req, res, next) => {
       requireOwnership(req, game)
       return game.updateOne(req.body.game)
     })
-    .then(() => res.sendStatus(204))
+    .then((game) => {
+      res.sendStatus(200).json({ game: game.toObject() })
+    })
     .catch(next)
 })
 
