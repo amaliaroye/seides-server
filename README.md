@@ -4,7 +4,8 @@ Express API server for a platformer game
 
 ## Links
 [Chalk](https://www.npmjs.com/package/chalk)
-
+[JSON API Response Formatting](https://stackoverflow.com/questions/12806386/is-there-any-standard-for-json-api-response-format)
+[Mongoose AutoPopulate](https://plugins.mongoosejs.io/plugins/autopopulate)
 
 ## Structure
 

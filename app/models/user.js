@@ -4,8 +4,8 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
-    set: v => v.toLowerCase()
+    unique: true
+    // set: v => v.toLowerCase()
   },
   hashedPassword: {
     type: String,
@@ -35,8 +35,8 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-userSchema.virtual('sprite').get(function () {
-  return this.name.toLowercase()
-})
+// userSchema.virtual('sprite').get(function () {
+//   return this.name.toLowerCase()
+// })
 
 module.exports = mongoose.model('User', userSchema)

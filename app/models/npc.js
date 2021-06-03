@@ -12,19 +12,16 @@ const npcSchema = new mongoose.Schema({
     required: true,
     set: capitalize
   },
+  points: {
+    type: Number
+  },
   request: {
     type: String
   },
-  options: {
-    // array of strings
-    type: [String]
-  },
+  options: [String],
   requestComplete: {
     type: Boolean,
     default: false
-  },
-  points: {
-    type: Number
   }
 }, { // options
   toObject: { getters: true },
@@ -34,12 +31,12 @@ const npcSchema = new mongoose.Schema({
 // Virtual Attributes
 //
 npcSchema.virtual('requestMessage').get(function () {
-  return this.name + ' ' + this.request
+  return this.name + ' wants ' + this.request
 })
 
 //
 npcSchema.virtual('sprite').get(function () {
-  return this.name.toLowerCase()
+  return (this.name.replace(/\s+/g, '-')).toLowerCase()
 })
 
 // npcSchema.methods.speak = function () {
@@ -48,5 +45,11 @@ npcSchema.virtual('sprite').get(function () {
 //     : "I don't have a name"
 //   console.log(greeting)
 // }
+
+/*
+request: {
+
+}
+*/
 
 module.exports = mongoose.model('Npc', npcSchema)
