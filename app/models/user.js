@@ -17,6 +17,14 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String
   }
+  },
+  sprite: { // image name of sprite sheet
+    type: String
+  },
+  games: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Game'
+  }]
 }, {
   timestamps: true,
   toObject: {
