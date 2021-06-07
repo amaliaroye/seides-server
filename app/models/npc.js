@@ -19,6 +19,7 @@ const npcSchema = new mongoose.Schema({
     type: String
   },
   options: [String],
+  replies: [String],
   requestComplete: {
     type: Boolean,
     default: false
@@ -29,12 +30,11 @@ const npcSchema = new mongoose.Schema({
 })
 
 // Virtual Attributes
-//
-npcSchema.virtual('requestMessage').get(function () {
-  return this.name + ' wants ' + this.request
-})
 
-//
+// npcSchema.virtual('requestMessage').get(function () {
+//   return this.name + ' wants ' + this.request
+// })
+
 npcSchema.virtual('sprite').get(function () {
   return (this.name.replace(/\s+/g, '-')).toLowerCase()
 })
