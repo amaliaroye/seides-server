@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true
-    // set: v => v.toLowerCase()
   },
   hashedPassword: {
     type: String,
@@ -16,7 +15,6 @@ const userSchema = new mongoose.Schema({
   },
   name: {
     type: String
-  }
   },
   sprite: { // image name of sprite sheet
     type: String
@@ -42,9 +40,5 @@ const userSchema = new mongoose.Schema({
     getters: true
   }
 })
-
-// userSchema.virtual('sprite').get(function () {
-//   return this.name.toLowerCase()
-// })
 
 module.exports = mongoose.model('User', userSchema)
