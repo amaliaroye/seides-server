@@ -10,8 +10,6 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "game": {
-      "owner": "'"${OWNER}"'",
-      "map": "'"${MAP}"'",
       "npcs": "'"${NPCS}"'"
     }
   }'

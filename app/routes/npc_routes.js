@@ -1,12 +1,14 @@
 const express = require('express')
-// const passport = require('passport')
 const Npc = require('../models/npc')
 const customErrors = require('../../lib/custom_errors')
 const handle404 = customErrors.handle404
-// const requireOwnership = customErrors.requireOwnership
 const removeBlanks = require('../../lib/remove_blank_fields')
-// const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
+
+// because I broke auth:
+// const passport = require('passport')
+// const requireOwnership = customErrors.requireOwnership
+// const requireToken = passport.authenticate('bearer', { session: false })
 
 // INDEX
 router.get('/npcs', (req, res, next) => {

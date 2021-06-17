@@ -62,7 +62,7 @@ router.post('/examples', requireToken, (req, res, next) => {
   req.body.example.owner = req.user.id
 
   Example.create(req.body.example)
-    // respond to succesful `create` with status 201 and JSON of new "example"
+    // respond to successful `create` with status 201 and JSON of new "example"
     .then(example => {
       res.status(201).json({ example: example.toObject() })
     })

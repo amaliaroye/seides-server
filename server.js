@@ -55,7 +55,6 @@ app.use(express.json())
 // this parses requests sent by `$.ajax`, which use a different content type
 app.use(express.urlencoded({ extended: true }))
 
-// log each request as it comes in for debugging
 app.use(requestLogger)
 
 // register route files
@@ -64,15 +63,12 @@ app.use(userRoutes)
 app.use(npcRoutes)
 app.use(gameRoutes)
 
-// register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
 // passed any error messages from them
 app.use(errorHandler)
 
-// run API on designated port (4741 in this case)
 app.listen(port, () => {
-  console.log(chalk.blue('Listening on port: ' + port))
+  console.log(chalk.cyan('Listening on Port: ' + port))
 })
 
-// needed for testing
 module.exports = app

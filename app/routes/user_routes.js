@@ -45,7 +45,8 @@ router.post('/sign-up', (req, res, next) => {
       // return necessary params to create a user
       return {
         email: req.body.credentials.email,
-        hashedPassword: hash
+        hashedPassword: hash,
+        name: req.body.credentials.name,
       }
     })
     // create user with provided email and hashed password
@@ -129,11 +130,14 @@ router.patch('/change-password', requireToken, (req, res, next) => {
 
 // 🔒 SIGN OUT
 router.delete('/sign-out', requireToken, (req, res, next) => {
-  // create a new random token for the user, invalidating the current one
+  //TODO: Why am I getting a 401: Unauthorized?
+  console.log('I\'m in the router!', req.user)
+  // set user token to null
   req.user.token = null
   // save the token and respond with 204
   req.user.save()
     .then(() => res.sendStatus(204))
+    .then(console.log('OUTTA HERE!', req.user))
     .catch(next)
 })
 

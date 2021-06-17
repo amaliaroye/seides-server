@@ -1,16 +1,17 @@
 const express = require('express')
-// const passport = require('passport')
+const passport = require('passport')
 const Game = require('../models/game')
 const customErrors = require('../../lib/custom_errors')
 const handle404 = customErrors.handle404
-// const requireOwnership = customErrors.requireOwnership
+const requireOwnership = customErrors.requireOwnership
 const removeBlanks = require('../../lib/remove_blank_fields')
-// const requireToken = passport.authenticate('bearer', { session: false })
+const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-router.get('/games', (req, res, next) => {
-  Game.find()
+router.get('/games', requireToken, (req, res, next) => {
+  Game.find({ owner: req.user })
+    .then(handle404)
     .then(games => {
       return games.map(games => games.toObject())
     })
@@ -19,7 +20,7 @@ router.get('/games', (req, res, next) => {
 })
 
 // SHOW
-router.get('/games/:id', (req, res, next) => {
+router.get('/games/:id', requireToken, (req, res, next) => {
   Game.findById(req.params.id)
     .then(handle404)
     .then(game => res.status(200).json({ game: game.toObject() }))
@@ -27,8 +28,8 @@ router.get('/games/:id', (req, res, next) => {
 })
 
 // CREATE
-router.post('/games', (req, res, next) => {
-  // req.body.game.owner = req.user.id
+router.post('/games', requireToken, (req, res, next) => {
+  req.body.game.owner = req.user.id
   Game.create(req.body.game)
     .then(game => {
       res.status(201).json({ game: game.toObject() })
@@ -37,27 +38,27 @@ router.post('/games', (req, res, next) => {
 })
 
 // UPDATE
-router.patch('/games/:id', removeBlanks, (req, res, next) => {
-  // delete req.body.game.owner
+router.patch('/games/:id', requireToken, removeBlanks, (req, res, next) => {
+  delete req.body.game.owner
 
   Game.findById(req.params.id)
     .then(handle404)
     .then(game => {
-      // requireOwnership(req, game)
+      requireOwnership(req, game)
       return game.updateOne(req.body.game)
     })
-    .then((game) => {
-      res.sendStatus(200).json({ game: game.toObject() })
+    .then(() => {
+      res.sendStatus(204)
     })
     .catch(next)
 })
 
 // DESTROY
-router.delete('/games/:id', (req, res, next) => {
+router.delete('/games/:id', requireToken, (req, res, next) => {
   Game.findById(req.params.id)
     .then(handle404)
     .then(game => {
-      // requireOwnership(req, game)
+      requireOwnership(req, game)
       game.deleteOne()
     })
     .then(() => res.sendStatus(204))

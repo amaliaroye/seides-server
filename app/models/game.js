@@ -6,7 +6,7 @@ const gameSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  map: { // name of map file
+  name: { // name of game/map file
     type: String
   },
   over: { // have all the NPCs been interacted with?
@@ -27,7 +27,7 @@ const gameSchema = new mongoose.Schema({
   }],
   // ARRAY OF OBJECTS, records game events
   logs: [{ any: {} }]
-}, { // options
+}, {
   timestamps: true,
   toObject: { getters: true },
   toJSON: { getters: true }
