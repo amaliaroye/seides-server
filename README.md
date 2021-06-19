@@ -3,8 +3,8 @@
 Express API server for a platformer game
 
 ## Links
+
 [Chalk](https://www.npmjs.com/package/chalk)
-[JSON API Response Formatting](https://stackoverflow.com/questions/12806386/is-there-any-standard-for-json-api-response-format)
 [Mongoose AutoPopulate](https://plugins.mongoosejs.io/plugins/autopopulate)
 
 ## Structure
@@ -46,8 +46,8 @@ conventional for modern Express apps, and it's handy because we'll definitely
 use `npm` anyway. These are the commands available:
 
 | Command                | Effect                                                                                                      |
-|------------------------|-------------------------------------------------------------------------------------------------------------|
-| `npm run server`       | Starts a development server with `nodemon` that automatically refreshes when you change something.                                                                                         |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `npm run server`       | Starts a development server with `nodemon` that automatically refreshes when you change something.          |
 | `npm test`             | Runs automated tests.                                                                                       |
 | `npm run debug-server` | Starts the server in debug mode, which will print lots of extra info about what's happening inside the app. |
 
@@ -62,10 +62,10 @@ Add your own scripts to test your custom API.
 
 ### Authentication
 
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/sign-up`             | `users#signup`    |
-| POST   | `/sign-in`             | `users#signin`    |
+| Verb   | URI Pattern         | Controller#Action |
+| ------ | ------------------- | ----------------- |
+| POST   | `/sign-up`          | `users#signup`    |
+| POST   | `/sign-in`          | `users#signin`    |
 | PATCH  | `/change-password/` | `users#changepw`  |
 | DELETE | `/sign-out/`        | `users#signout`   |
 
@@ -96,10 +96,10 @@ HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8
 
 {
-  "user": {
-    "id": 1,
-    "email": "an@example.email"
-  }
+"user": {
+"id": 1,
+"email": "an@example.email"
+}
 }
 ```
 
@@ -129,11 +129,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
 {
-  "user": {
-    "id": 1,
-    "email": "an@example.email",
-    "token": "33ad6372f795694b333ec5f329ebeaaa"
-  }
+"user": {
+"id": 1,
+"email": "an@example.email",
+"token": "33ad6372f795694b333ec5f329ebeaaa"
+}
 }
 ```
 
@@ -186,4 +186,4 @@ HTTP/1.1 204 No Content
 
 1. All content is licensed under a CC­BY­NC­SA 4.0 license.
 1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+   alternative licensing, please contact legal@ga.co.

@@ -5,11 +5,6 @@ const handle404 = customErrors.handle404
 const removeBlanks = require('../../lib/remove_blank_fields')
 const router = express.Router()
 
-// because I broke auth:
-// const passport = require('passport')
-// const requireOwnership = customErrors.requireOwnership
-// const requireToken = passport.authenticate('bearer', { session: false })
-
 // INDEX
 router.get('/npcs', (req, res, next) => {
   Npc.find()

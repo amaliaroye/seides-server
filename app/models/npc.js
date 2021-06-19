@@ -1,16 +1,16 @@
 /* NPC Schema: creates instances of NPCs */
 const mongoose = require('mongoose')
 
-const capitalize = function (val) {
-  if (typeof val !== 'string') val = ''
-  return val.charAt(0).toUpperCase() + val.substring(1)
-}
+// const capitalize = function (val) {
+//   if (typeof val !== 'string') val = ''
+//   return val.charAt(0).toUpperCase() + val.substring(1)
+// }
 
 const npcSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    set: capitalize
+    //set: capitalize
   },
   points: {
     type: Number
