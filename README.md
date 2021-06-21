@@ -4,15 +4,11 @@
 
 The Express API for my final Capsone Project, Switching SEIdes. Check out the links below for more information!
 
----
-
 ## 🔗 Links
 
 - [Deployed Server](https://seides-server.herokuapp.com/)
 - [Deployed Client](https://amaliaroye.github.io/seides-client/)
 - [Client Repo](https://github.com/amaliaroye/seides-client)
-
----
 
 ## 🚀 Routes
 
@@ -45,10 +41,6 @@ The Express API for my final Capsone Project, Switching SEIdes. Check out the li
 | PATCH  | `/change-password/` | `users#changepw`  |
 | DELETE | `/sign-out/`        | `users#signout`   |
 
----
-
 ## 📊 Entity Relationship Diagram
 
 ![Entity Relationship Diagram](https://i.imgur.com/sfQIKYH.png)
-
----
